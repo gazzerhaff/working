@@ -7,20 +7,27 @@
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
    
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
   </head>
   <body>
    <h1>Live Temperature data</h1>
 
   <h2><small>Air out temperature</small> <span id="myelement"></span></h2>
-   <h2><small>Air out temperature</small> <span id="newelement"></span></h2>
 
   //<small><a href="/xively-js/tutorial/">&larr; Back to Tutorial</a></small>
 
   <!-- Include jQuery -->
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-
+  <!-- Include XivelyJS -->
   <script src="http://d23cj0cdvyoxg0.cloudfront.net/xivelyjs-1.0.4.min.js"></script>
   <!-- Our Script (should be included in a separate file, only inline for demo purposes) -->
   <script>
@@ -41,11 +48,12 @@
           selector      = "#myelement";   // Your element on the page - takes any valid jQuery selector
 
       // Get datastream data from Xively
-      xively.datastream.get (feedID, datastreamID, datastreamID2,datastreamID3,datastreamID4,function ( datastream ) {
+    // Get datastream data from Xively
+      xively.datastream.get (feedID, datastreamID, function ( datastream ) {
         // WARNING: This code is only executed when we get a response back from Xively, it will likely execute after the rest your script
         // NOTE: The variable "datastream" will contain all the Datastream information as an object. The structure of Datastream objects can be found at: 
         // https://xively.com/dev/docs/api/quick_reference/api_resource_attributes/#datastream
-$(#newelement).xively (get, datastreamID2);
+
 
         // Display the current value from the datastream
         $(selector).html( datastream["current_value"] );
@@ -60,7 +68,6 @@ $(#newelement).xively (get, datastreamID2);
 
       // WARNING: Code here will continue executing while we get the datastream data from Xively, use the function associated with datastream.get to work with the data, when the request is complete
     });
-  </script>
 
 
     <!--[if !IE]><script>fixScale(document);</script><![endif]-->
