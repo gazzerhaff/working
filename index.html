@@ -21,7 +21,7 @@
   <body>
    <h1>Live Temperature data</h1>
 
-  <h2><small>Air out temperature</small> <span id="#myelement"></span></h2>
+  <h2><small>Air out temperature</small> <span id="myelement"></span></h2>
 
   
 
@@ -48,7 +48,7 @@
           selector      = "#myelement";   // Your element on the page - takes any valid jQuery selector
 
       // Get datastream data from Xively
-    // Get datastream data from Xively
+
       xively.datastream.get (feedID, datastreamID, function ( datastream ) {
         // WARNING: This code is only executed when we get a response back from Xively, it will likely execute after the rest your script
         // NOTE: The variable "datastream" will contain all the Datastream information as an object. The structure of Datastream objects can be found at: 
