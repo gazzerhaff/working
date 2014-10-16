@@ -40,15 +40,10 @@
 
       // Replace with your own values
       var feedID        = 1949090795,          // Feed ID (the last number on the URL on the feed page on Xively)
-          datastreamID  = "Air_out_temperature";       // Datastream ID
-          datastreamID2 = "Ambient_temperature";
-          datastreamID3 = "Gas_1_temperature";
-          datastreamID4 = "Gas_2_temperature";
-          
+            datastreamID  = "Air_out_temperature";       // Datastream ID
           selector      = "#myelement";   // Your element on the page - takes any valid jQuery selector
 
       // Get datastream data from Xively
-
       xively.datastream.get (feedID, datastreamID, function ( datastream ) {
         // WARNING: This code is only executed when we get a response back from Xively, it will likely execute after the rest your script
         // NOTE: The variable "datastream" will contain all the Datastream information as an object. The structure of Datastream objects can be found at: 
@@ -68,7 +63,7 @@
 
       // WARNING: Code here will continue executing while we get the datastream data from Xively, use the function associated with datastream.get to work with the data, when the request is complete
     });
-
+    
 
     <!--[if !IE]><script>fixScale(document);</script><![endif]-->
     
