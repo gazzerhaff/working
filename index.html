@@ -23,6 +23,7 @@
     <h1>Live temperature data</h1>
 
   <h2><small>Air out temperature</small> <span id="myelement"></span></h2>
+  <h2><small>Ambient temperature</small> <span id="ambient"></span></h2>
 
   
   <!-- Include jQuery -->
@@ -41,6 +42,7 @@
       // Replace with your own values
       var feedID        = 1949090795,          // Feed ID (the last number on the URL on the feed page on Xively)
           datastreamID  = "Air_out_temperature";       // Datastream ID
+          datastreamID1 = "Ambient_temperature";
           selector      = "#myelement";   // Your element on the page - takes any valid jQuery selector
 
       // Get datastream data from Xively
@@ -57,6 +59,14 @@
         xively.datastream.subscribe( feedID, datastreamID, function ( event , datastream_updated ) {
           // Display the current value from the updated datastream
           $("#myelement").html( datastream_updated["current_value"] );
+          
+           $("#ambient").html( datastream["current_value"] );
+
+        // Getting realtime! The function associated with the subscribe method will be executed every time there is an update to the datastream
+        xively.datastream.subscribe( feedID, datastreamID, function ( event , datastream_updated ) {
+          // Display the current value from the updated datastream
+          $("#ambient").html( datastream_updated["current_value"] );
+          
         });
 
       });
